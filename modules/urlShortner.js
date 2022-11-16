@@ -1,15 +1,17 @@
 const mongoose = require("mongoose");
-const shortId = require("shortid")
+const shortId = require("shortid");
+
+
 const shortUrlSchema = new mongoose.Schema({
 
     full : {
         type: String,
         required: true,
     },
-    short: {
+    short : {
         type: String,
         required: true,
-        default: () => shortId.generate
+        default: shortId.generate
     },
     clicks: {
         type: Number,
