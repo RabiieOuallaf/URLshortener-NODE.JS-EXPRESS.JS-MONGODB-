@@ -22,7 +22,17 @@ app.post('/shortUrls', async (req, res) => {
 
      res.redirect('/');
 })
+app.get("/:shortUrls",async (req, res) => {
 
+    const Surl = await shortUrl.findOne({ short : req.params.Surl });
+
+    if(Surl == null) return res.sendStatus(404);
+
+    Surl.clicks++;
+    Surl.save();
+
+    res.redirect(Surl.full);
+});
 
 app.listen(PORT, () => {
     console.log(`Port is lestining on port ${PORT}`)
