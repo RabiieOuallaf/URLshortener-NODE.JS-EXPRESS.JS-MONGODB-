@@ -22,9 +22,9 @@ app.post('/shortUrls', async (req, res) => {
 
      res.redirect('/');
 })
-app.get("/:shortUrls",async (req, res) => {
+app.get("/:shortUrl",async (req, res) => {
 
-    const Surl = await shortUrl.findOne({ short : req.params.Surl });
+    const Surl = await shortUrl.findOne({ short : req.params.shortUrl });
 
     if(Surl == null) return res.sendStatus(404);
 
