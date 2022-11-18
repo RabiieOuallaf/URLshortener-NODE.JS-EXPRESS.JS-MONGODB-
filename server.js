@@ -1,9 +1,10 @@
 const express = require('express');
 const mongoose = require("mongoose");
 const shortUrl = require("./modules/urlShortner");
+require("dotenv").config();
 const app = express();
 
-mongoose.connect("mongodb+srv://rabieouallaf:eC2KV0PE89TgdsEe@cluster0.u6lnk1z.mongodb.net/?retryWrites=true&w=majority")
+mongoose.connect(process.env.mongodb);
 const PORT = process.env.PORT || 5000;
 
 app.set("view engine" , "ejs");
